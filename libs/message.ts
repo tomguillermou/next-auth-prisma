@@ -1,14 +1,21 @@
-import { Message, messageModel } from "@/models/message";
+import { prisma } from "./prisma";
 
 export async function publishMessage(params: { content: string; userId: string }): Promise<void> {
-  console.log("🚀  params:", params);
-  await messageModel.create({
-    content: params.content,
-    userId: params.userId,
-    createdAt: Date.now(),
+  await prisma.message.create({
+    data: {
+      content: params.content,
+      userId: params.userId,
+    },
   });
 }
 
-export function listMessages(): Promise<Message[]> {
-  return messageModel.find().lean().exec();
+export function listMessages() {
+  return prisma.message.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+    include: {
+      user: true,
+    },
+  });
 }

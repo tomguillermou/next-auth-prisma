@@ -1,3 +1,5 @@
+import { revalidatePath } from "next/cache";
+
 import { auth } from "@/app/auth";
 import { publishMessage } from "@/libs/message";
 
@@ -17,6 +19,8 @@ export default async function MessageForm() {
       content,
       userId: session.user.id,
     });
+
+    revalidatePath("/");
   }
 
   return (
