@@ -12,14 +12,12 @@ export default async function LoginPage() {
   }
 
   return (
-    <div className="hero mt-12">
-      <div className="hero-content text-center">
-        <div className="max-w-lg">
-          <h1 className="text-4xl font-bold mb-4">Login now</h1>
+    <main className="hero max-w-lg mx-auto mt-12">
+      <div className="hero-content flex-col p-8 gap-8">
+        <h1 className="text-5xl font-bold">Login</h1>
 
-          <ButtonLoginGoogle />
-        </div>
+        <ButtonLoginGoogle />
       </div>
-    </div>
+    </main>
   );
 }

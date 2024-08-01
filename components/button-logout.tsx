@@ -10,9 +10,9 @@ async function logout() {
 export default function ButtonLogout() {
   return (
     <form action={logout}>
-      <button className="btn btn-ghost text-lg" type="submit">
+      <button className="btn text-lg" type="submit">
         <FiLogOut />
-        Disconnect
+        Logout
       </button>
     </form>
   );
