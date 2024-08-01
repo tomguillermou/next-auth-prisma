@@ -2,17 +2,17 @@ import { FcGoogle } from "react-icons/fc";
 
 import { signIn } from "@/app/auth";
 
-export default function ButtonGoogleConnect() {
+async function loginGoogle() {
+  "use server";
+  await signIn("google", { redirectTo: "/" });
+}
+
+export default function ButtonLoginGoogle() {
   return (
-    <form
-      action={async () => {
-        "use server";
-        await signIn("google");
-      }}
-    >
+    <form action={loginGoogle}>
       <button className="btn text-lg" type="submit">
         <FcGoogle />
-        Signin with Google
+        Login with Google
       </button>
     </form>
   );
